@@ -30,6 +30,7 @@ public:
 
     ~smartmass() {
         std::cout << "Destroyed\n";
+        delete[] mass;
     };
 
 public:
@@ -52,7 +53,10 @@ public:
         if (index < 0) {
             std::cout << "Negative Index!\n";
         }
-        else {
+        else if (index > mass_length) {
+            std::cout << "Out of range!\n";
+        }
+        else{
             return mass[index];
         }
     };
@@ -60,6 +64,9 @@ public:
     void change(int index, int value) {
         if (index < 0) {
             std::cout << "Negative Index!\n";
+        }
+        else if (index > mass_length) {
+            std::cout << "Out of range!\n";
         }
         else {
             mass[index] = value;
@@ -69,6 +76,9 @@ public:
     void remove(int index) {
         if (index < 0) {
             std::cout << "Negative Value!\n";
+        }
+        else if (index > mass_length) {
+            std::cout << "Out of range!\n";
         }
         else {
             int* tmp = new int[mass_length - 1];
